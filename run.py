@@ -10,6 +10,9 @@ run testcase：
 
 import os
 import pytest
+import sys
+sys.path.append('.')
+
 from Common import Log
 from Common import Common
 from Param import Consts
@@ -30,11 +33,10 @@ if __name__ == '__main__':
                                            'allure%s' % Common.current_time(Consts.TIME_FORMAT_FILE))
 
     # run pytest
-    # /test_httpapi.py::TestHTTPAPITest::test_heart_beat_update_data
-    # /test_wsapi.py::TestWSAPITest::test_get_real_chain_block_info_with_sub
-    # -m http  # run testcases which marked as http
-    args_allure = ['-s', '-q', '--alluredir', xml_report_path_allure,
-                   'Testcase/test_miner_64g_gas.py::TestMiner64GTest::test_check_default_gasfee']
+    # args_allure = ['-s', '-q', '--alluredir', xml_report_path_allure,
+    #                'Testcase/test_miner_64g_gas.py::TestMiner64GTest']
+    args_allure = ['-s', '-v', '--alluredir', xml_report_path_allure,
+                   'Testcase/test_miner_64g_gas.py::TestMiner64GTest']
     args_pytest = ['-s', '-v', '--html=%s' % os.path.join(html_report_path,
                                                           'pytest-html%s' % Common.current_time(Consts.TIME_FORMAT_FILE),
                                                           'report.html'),

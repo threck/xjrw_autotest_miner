@@ -66,7 +66,8 @@ class Miner(object):
         # nFIL
         # 1 nFIL = 1000pFIL
         # ./lotus-miner xjrw set-gasfee
-        return Cmd.run(f"{miner['xjrw_set_gasfee']} {fee}")
+        rt_text, value = Cmd.run(f"{miner['xjrw_set_gasfee']} {fee}")
+        return rt_text, value
 
     def xjrw_get_gasfee(self):
         # pFIL
@@ -74,10 +75,15 @@ class Miner(object):
         text, value = Cmd.run(miner['xjrw_get_gasfee'])
         if value == 0:
             rt_text = text.split(' ')[-1].strip()
-            if rt_text != 0:
+            print(f'rt_text:{rt_text}')
+            if rt_text != '0':
                 unit = text.split(' ')[-1].strip()
                 count = text.split(' ')[-2].strip()
-                rt_text, unit = Coin.to_nfil(count, unit)
+                print(f'unit:{unit}')
+                print(f'count:{count}')
+                rt_text, unit = Coin.to_nfil(int(count), unit)
+                print(f'rt_text:{rt_text}')
+                print(f'unit:{unit}')
         else:
             rt_text = text
         return rt_text

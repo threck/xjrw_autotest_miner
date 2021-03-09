@@ -17,15 +17,13 @@ def to_nfil(count, unit):
     elif unit == 'pFIL':
         count = count * 0.001
     elif unit == 'fFIL':
-        count = count * 0.000001
+        count = '%f' % (count * 0.000001)
     elif unit == 'aFIL':
         if unit < 1:
             count = 0
         else:
-            count = count * 0.000000001
+            count = '%f' % count * 0.000000001
     else:
-        pass
-        # if unit == 'μFIL':
-        #     count = count * 1000
-    return count, 'nFIL'
+        count = count * 1000
+    return str(count), 'nFIL'
 
