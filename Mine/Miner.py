@@ -2,6 +2,7 @@
 
 import json
 from Common.Cmd import Cmd
+from Common import Coin
 from Param.MineCmd import miner
 
 
@@ -61,11 +62,11 @@ class Miner(object):
         pass
 
     # xjrw command
-    def xjrw_set_gasfee(self):
+    def xjrw_set_gasfee(self, fee):
         # nFIL
         # 1 nFIL = 1000pFIL
         # ./lotus-miner xjrw set-gasfee
-        pass
+        return Cmd.run(f"{miner['xjrw_set_gasfee']} {fee}")
 
     def xjrw_get_gasfee(self):
         # pFIL
@@ -74,7 +75,9 @@ class Miner(object):
         if value == 0:
             rt_text = text.split(' ')[-1].strip()
             if rt_text != 0:
-                rt_text = text.split(' ')[-2].strip()
+                unit = text.split(' ')[-1].strip()
+                count = text.split(' ')[-2].strip()
+                rt_text, unit = Coin.to_nfil(count, unit)
         else:
             rt_text = text
         return rt_text

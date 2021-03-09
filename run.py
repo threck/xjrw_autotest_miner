@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # /test_wsapi.py::TestWSAPITest::test_get_real_chain_block_info_with_sub
     # -m http  # run testcases which marked as http
     args_allure = ['-s', '-q', '--alluredir', xml_report_path_allure,
-                   'Testcase/test_miner_64g_gas.py::TestWSAPITest::test_get_real_chain_block_info_with_sub']
+                   'Testcase/test_miner_64g_gas.py::TestMiner64GTest::test_check_default_gasfee']
     args_pytest = ['-s', '-v', '--html=%s' % os.path.join(html_report_path,
                                                           'pytest-html%s' % Common.current_time(Consts.TIME_FORMAT_FILE),
                                                           'report.html'),

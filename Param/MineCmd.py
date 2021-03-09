@@ -8,7 +8,8 @@ lotus = {
 
 
 miner = {
-    "xjrw_get_gasfee": "/root/lotus-miner xjrw get-gasfee"
+    "xjrw_get_gasfee": "/root/lotus-miner xjrw get-gasfee",
+    "xjrw_set_gasfee": "/root/lotus-miner xjrw set-gasfee"
 }
 
 
