@@ -4,8 +4,10 @@ import pytest
 import allure
 import sys
 from Common import Log
+from Common import Assert
 from Mine.Miner import Miner
 
+test = Assert.Assertions()
 
 @pytest.mark.miner_64g
 class TestMiner64GTest:
@@ -30,7 +32,7 @@ class TestMiner64GTest:
         miner = Miner()
         actual_value = miner.xjrw_get_gasfee()
 
-        assert expect_value == actual_value, f"error -> expect: {expect_value}, actual: {actual_value}"
+        assert test.assert_text(expect_value, actual_value)
 
     @allure.feature('64G矿机')
     @allure.story('gasfee')
@@ -47,5 +49,5 @@ class TestMiner64GTest:
         actual_value = miner.xjrw_get_gasfee()
 
         # assert
-        assert expect_value == actual_value, f"error -> expect: {expect_value}, actual: {actual_value}"
+        assert test.assert_text(expect_value, actual_value)
 
