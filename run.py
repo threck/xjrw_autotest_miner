@@ -10,8 +10,8 @@ run testcase：
 
 import os
 import pytest
-import sys
-sys.path.append('.')
+#import sys
+#sys.path.append('.')
 
 from Common import Log
 from Common import Common

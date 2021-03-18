@@ -16,7 +16,7 @@ class TestMiner64GTest:
 
     def teardown_function(self):
         miner = Miner()
-        miner.xjrw_set_gasfee(0)
+        miner.xjrw_set_gasfee_by_cmd(0)
 
     @allure.feature('64G矿机')
     @allure.story('gasfee')
@@ -39,7 +39,7 @@ class TestMiner64GTest:
     @pytest.mark.gasfee
     @pytest.mark.parametrize("expect_value", ['0.000001', '0.001', '1', '10', '100', '1000', '10000', '10000000', '10000000000'])
     def test_set_gasfee_by_cmd(self, expect_value, init_gasfee):
-        init_gasfee
+        init_gasfee()
         logger = Log.Log(sys._getframe().f_code.co_name)
         logger.info("test begining")
 
@@ -56,7 +56,7 @@ class TestMiner64GTest:
     @pytest.mark.gasfee
     @pytest.mark.parametrize("expect_value", ['0.000001', '0.001', '1', '10', '100', '1000', '10000', '10000000', '10000000000'])
     def test_set_gasfee_by_config_file(self, expect_value, init_gasfee):
-        init_gasfee
+        init_gasfee()
         logger = Log.Log(sys._getframe().f_code.co_name)
         logger.info("test begining")
 
