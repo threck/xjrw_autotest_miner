@@ -61,12 +61,31 @@ class Miner(object):
         # ./lotus-miner storage find ${sector_id}
         pass
 
+    def xjrw_set_config_json(self):
+        # vim /root/config.json
+        pass
+
+    def xjrw_reload_config(self):
+        # ./lotus-miner xjrw reload
+        rt_text, value = Cmd.run(miner['xjrw_reload_config'])
+        return rt_text, value
+
     # xjrw command
-    def xjrw_set_gasfee(self, fee):
+    def xjrw_set_gasfee_by_cmd(self, fee):
         # nFIL
         # 1 nFIL = 1000pFIL
         # ./lotus-miner xjrw set-gasfee
         rt_text, value = Cmd.run(f"{miner['xjrw_set_gasfee']} {fee}")
+        return rt_text, value
+
+    def xjrw_set_gasfee_by_config_file(self, fee):
+        # nFIL
+        # 1 nFIL = 1000pFIL
+        # /opt/hdd_pool/.lotusminer/config.toml
+        # GasFee = '0 FIL' 的值为0.000000000001 FIL
+        rt_text, value = Cmd.run(f"{miner['xjrw_set_gasfee']} {fee}")
+        self.xjrw_set_config_json()
+        self.xjrw_reload_config()
         return rt_text, value
 
     def xjrw_get_gasfee(self):
@@ -87,14 +106,6 @@ class Miner(object):
         else:
             rt_text = text
         return rt_text
-
-    def set_config_json(self):
-        # vim /root/config.json
-        pass
-
-    def xjrw_reload_config(self):
-        # ./lotus-miner xjrw reload
-        pass
 
     def xjrw_windowspost(self):
         # ./lotus-miner xjrw windowspost
