@@ -8,5 +8,5 @@ from Mine.Miner import Miner
 def init_gasfee():
     yield
     miner = Miner()
-    miner.xjrw_set_gasfee(0)
+    miner.xjrw_set_gasfee_by_cmd(0)
 
