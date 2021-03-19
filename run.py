@@ -21,6 +21,7 @@ from Common import Email
 from Common import Cmd as command
 
 if __name__ == '__main__':
+
     # initial
     log = Log.Log()
     config = Config()

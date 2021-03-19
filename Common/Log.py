@@ -39,6 +39,9 @@ class Log(object):
     path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     log_file = '%s/Logs/%slog.log' % (path, Common.current_time(Consts.TIME_FORMAT_FILE))
     log_err_file = '%s/Logs/%serr.log' % (path, Common.current_time(Consts.TIME_FORMAT_FILE))
+    # prepare log directory
+    if not os.path.isdir(f'{path}/Logs'):
+        os.mkdir(f'{path}/Logs')
     log_file_handler = logging.FileHandler(log_file, encoding='utf-8')
     log_file_handler_err = logging.FileHandler(log_err_file, encoding='utf-8')
 
@@ -47,7 +50,6 @@ class Log(object):
     create_log_file(log_err_file)
 
     def __init__(self, type='log'):
-        os.mkdir(f'{Log.path}/Logs')
         self.type = type
 
     def info(self, log_str):
