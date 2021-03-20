@@ -18,7 +18,7 @@ class TestMiner64GTest:
         miner = Miner()
         miner.xjrw_set_gasfee_by_cmd(0)
 
-    @allure.feature('64G矿机')
+    @allure.feature('挖矿')
     @allure.story('gasfee')
     @pytest.mark.gasfee
     def test_check_default_gasfee(self):
@@ -34,7 +34,7 @@ class TestMiner64GTest:
 
         assert test.assert_text(expect_value, actual_value)
 
-    @allure.feature('64G矿机')
+    @allure.feature('挖矿')
     @allure.story('gasfee')
     @pytest.mark.gasfee
     @pytest.mark.parametrize("expect_value", ['0.000001', '0.001', '1', '10', '100', '1000', '10000', '10000000', '10000000000'])
@@ -51,7 +51,7 @@ class TestMiner64GTest:
         # assert
         assert test.assert_text(expect_value, actual_value)
 
-    @allure.feature('64G矿机')
+    @allure.feature('挖矿')
     @allure.story('gasfee')
     @pytest.mark.gasfee
     @pytest.mark.parametrize("expect_value", ['0.000001', '0.001', '1', '10', '100', '1000', '10000', '10000000', '10000000000'])
