@@ -18,7 +18,7 @@ class Assertions(object):
                            (expected_text, target_text))
             return True
         except:
-            self.log.error("Case Assert failed: Response text != expected_msg, text is: %s , expected_msg is: %s " %
+            self.log.error("Case Assert failed: Response text != expected_msg, expected_msg is: %s, target_text is: %s " %
                            (expected_text, target_text))
             raise
 

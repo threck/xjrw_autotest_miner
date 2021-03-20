@@ -1,12 +1,15 @@
 # -*- coding:utf-8 -*-
 
-import json
+import os
 from Common.Cmd import Cmd
+from Common.Log import Log
 from Common import Coin
 from Param.MineCmd import miner
 
 
 class Miner(object):
+    def __init__(self):
+        self.log = Log('Miner')
     # service
     def start(self):
         # nohup ./lotus-miner run &> ${log} &
@@ -83,9 +86,14 @@ class Miner(object):
         # 1 nFIL = 1000pFIL
         # /opt/hdd_pool/.lotusminer/config.toml
         # GasFee = '0 FIL' 的值为0.000000000001 FIL
+        if 'LOTUS_STORAGE_PATH' in os.environ:
+            miner_path = os.environ['LOTUS_STORAGE_PATH']
+            self.log.info(f'LOTUS_STORAGE_PATH: {miner_path}')
+        else:
+            self.log.error(f'LOTUS_STORAGE_PATH is None, please check!!')
+            raise
+        config_file = f'{miner_path}/config.toml'
         rt_text, value = Cmd.run(f"{miner['xjrw_set_gasfee']} {fee}")
-        self.xjrw_set_config_json()
-        self.xjrw_reload_config()
         return rt_text, value
 
     def xjrw_get_gasfee(self):
