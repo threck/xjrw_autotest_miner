@@ -10,7 +10,7 @@ run testcase：
 
 import os
 import pytest
-#import sys
+import sys
 #sys.path.append('.')
 
 from Common import Log
@@ -33,15 +33,9 @@ if __name__ == '__main__':
     html_report_path_allure = os.path.join(config.html_report_path,
                                            'allure%s' % Common.current_time(Consts.TIME_FORMAT_FILE))
 
-    # run pytest
-    # args_allure = ['-s', '-q', '--alluredir', xml_report_path_allure,
-    #                'Testcase/test_miner_64g_gas.py::TestMiner64GTest']
-    args_allure = ['-s', '-v', '--alluredir', xml_report_path_allure,
-                   'Testcase/test_miner_64g_gas.py::TestMiner64GTest']
-    args_pytest = ['-s', '-v', '--html=%s' % os.path.join(html_report_path,
-                                                          'pytest-html%s' % Common.current_time(Consts.TIME_FORMAT_FILE),
-                                                          'report.html'),
-                   'Testcase/test_miner_64g_gas.py']
+    # generate allure xml reports
+    args_allure = ['-s', '-v', '--alluredir', xml_report_path_allure]
+    args_allure.extend(sys.argv[1:])
     pytest.main(args_allure)
 
     # generate allure html reports

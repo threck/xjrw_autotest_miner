@@ -7,26 +7,17 @@ source venv/bin/activate
 
 ## need to install some libraries:
 ```
-pip3 install pytest allure-pytest requests requests-toolbelt
+pip3 install pytest allure-pytest
 ```
 
-## how to run auto api testcase:
+## how to run testcase:
+e.g.
 ```
-python run.py
+python run.py Testcase/test_miner_gas.py   # run testcases in test_miner_gas.py
+python run.py -m gasfee                    # run testcases marked as gasfee
 ```
 
 ## exit python venv
 ```
 deactivate
-```
-
-## not needed
-```
-pip install PyYaml faker
-```
-
-### how to run pytest cases with marks
-e.g.
-```
-pytest -m http  # run cases that marked as [http]
 ```

@@ -32,6 +32,7 @@ class TestMiner64GTest:
         miner = Miner()
         actual_value = miner.xjrw_get_gasfee()
 
+        # assert
         assert test.assert_text(expect_value, actual_value)
 
     @allure.feature('挖矿')
